@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!--stylesheet-->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Opgave 4</title>
+</head>
+
+<body class="p-4">
+
+    <form class="container-lg">
+        <h4 class="text-success">Kontakt os</h4>
+        <div class="row my-4 text-success-emphasis ">
+            <label class="col" for="name">Navn:</label>
+            <div class="col">
+                <input type="text" name="name" id="name" placeholder="Navn..">
+            </div>
+        </div>
+
+        <div class="row my-4 text-success-emphasis">
+            <label class="col" for="email">E-mail adresse:</label>
+            <div class="col">
+                <input class="col" type="email" name="email" id="email" placeholder="E-mail..">
+            </div>
+        </div>
+
+        <div class="row my-4 text-success-emphasis">
+            <label class="col" for="message">Besked:</label>
+            <div class="col">
+
+                <textarea name="message" id="message" cols="30" rows="10"
+                placeholder="Indtast din besked.."></textarea>
+            </div>
+        </div>
+
+        <label for="new-plant">Ny plante til databasen:</label>
+        <input type="checkbox" name="new-plant" id="new-plant">
+
+        <div class="plant">
+            <div class="row my-4 text-success-emphasis">
+                <label for="plant-name" class="col">Plantens danske navn:</label>
+                <div class="col">
+                    <input type="text" id="plant-name" placeholder="Plantens Danske navn..">
+                </div>
+            </div>
+
+            <div class="row my-4 text-success-emphasis">
+                <label class="col" for="plant-species" class="col">Plantens variant:</label>
+                <div class="col">
+                    <input type="text" id="plant-species" placeholder="Plantens variant..">
+                </div>
+            </div>
+
+            <div class="row my-4 text-success-emphasis">
+                <label class="col" for="botanical-name">Plantens botaniske navn:</label>
+                <div class="col">
+                    <input type="text" id="botanical-name" placeholder="Plantens botaniske navn..">
+                </div>
+            </div>
+
+            <div class="row my-4 text-success-emphasis">
+                <label class="col" for="plant-type">Plantens type:</label>
+                <div class="col">
+                    <input type="text" id="plant-type">
+                </div>
+            </div>
+
+            <div class="row my-4 text-success-emphasis">
+                <label class="col" for="plant-height">Plantens højde:</label>
+                <div class="col">
+                    <input type="number" name="plant-height" id="plant-height">
+                    <span>cm</span>
+                </div>
+            </div>
+            
+            <div class="row my-4 text-success-emphasis">
+                <label class="col" for="plant-reach">Plantens rækkeafstand:</label>
+                <div class="col">
+                    <input type="number" name="plant-reach" id="plant-reach">
+                    <span>cm</span>
+                </div>
+            </div>
+            
+            <div class="row my-4 text-success-emphasis">
+                <label class="col" for="seeding-depth">Plantens sådybde:</label>
+                <div class="col">
+                    <input type="number" name="seeding-depth" id="seeding-depth">
+                    <span>cm</span>
+                </div>
+            </div>
+
+            <div class="row my-4 text-success-emphasis">
+                <label class="col" for="light-conditions">Plantens lysforhold:</label>
+                <div class="col">
+                    <select name="light-conditions" id="light-conditions">
+                        <option value="Fuld sol">Fuld Sol</option>
+                        <option value="Ingen sol">Ingen Sol</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row my-4 text-success-emphasis">
+                <label class="col" for="plant-sprout">Planten forspires i: <br> (vælg flere med ctrl eller shift)</label>
+                <div class="col">
+                    <select class="col" name="plant-sprout" id="plant-sprout">
+                        <option value="Januar">Januar</option>
+                        <option value="Februar">Februar</option>
+                        <option value="Marts">Marts</option>
+                        <option value="April">April</option>
+                        <option value="Maj">Maj</option>
+                        <option value="Juni">Juni</option>
+                        <option value="Juli">Juli</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="Oktober">Oktober</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row my-4 text-success-emphasis">
+                <label class="col" for="plant-removed">Planten udplantes i: <br> (vælg flere med ctrl eller shift)</label>
+                <div class="col">
+                    <select name="plant-removed" id="plant-removed">
+                        <option value="Januar">Januar</option>
+                        <option value="Februar">Februar</option>
+                        <option value="Marts">Marts</option>
+                        <option value="April">April</option>
+                        <option value="Maj">Maj</option>
+                        <option value="Juni">Juni</option>
+                        <option value="Juli">Juli</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="Oktober">Oktober</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row my-4 text-success-emphasis">
+                <label class="col" for="plant-sprout-time">Planten spirer efter ca..:</label>
+                <div class="col">
+                    <input type="number" name="plant-sprout-time" id="plant-sprout-time">
+                    <span>dage</span>
+                </div>
+            </div>
+
+            <div class="row my-4 text-success-emphasis">
+                <label class="col" for="plant-harvest">Planten er klar til høst..:</label>
+                <div class="col">
+                    <input type="number" name="plant-harvest" id="plant-harvest">
+                    <span>dage</span>
+                </div>
+            </div>
+
+            <div class="row my-4 text-success-emphasis">
+                <label class="col" for="plant-description">Plantebeskrivelse:</label>
+                <div class="col">
+                    <textarea class="col" name="plant-description" id="plant-description" cols="30" rows="10" placeholder="Udfyld her.."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <button class="mb-3">Indsend</button>
+
+        </div>
+    </form>
+    <!--bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

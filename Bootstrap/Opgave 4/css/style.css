@@ -1,0 +1,22 @@
+form {
+    border: 1px solid ;
+}
+
+.plant {
+    visibility: hidden;
+    height: 0;
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+#new-plant:checked ~ .plant{
+    visibility: visible;
+    height: fit-content;
+    opacity: 1;
+}
+
+
+.row:nth-child(even) {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-light-rgb))!important;
+}
