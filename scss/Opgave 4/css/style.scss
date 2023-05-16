@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text?');
+
+$font-main: 'Crimson Text', serif;
+
+$color-bg: hsl(40, 43%, 82%);
+$color-heading: hsl(220, 43%, 30%);
+
+@mixin image-grid($columns, $margin) {
+    width: calc((100% / $columns) - ($margin));
+    &:nth-child(n) {
+        margin: 0 $margin $margin 0;
+    }
+    &:nth-child(#{$columns}n) {
+        margin-right: 0;
+        /*margin-bottom:0;*/
+    }
+}
+
+body {
+    font-family: $font-main;
+    background-color: $color-bg;
+    padding: 1rem;
+}
+
+h1 {
+    font-family: $font-main;
+    color: $color-heading;
+
+    //I don't like this :( 
+    padding-bottom: 2rem;
+}
+
+img{
+    max-width: 100%;
+}
+
+.imagegrid {
+    @media screen and (min-width: 601px) {
+        .item {
+            float: left;
+            @include image-grid(7, 2%)
+        }
+    }
+    @media screen and (max-width:600px) {
+        .item {
+            float: left;
+            @include image-grid(3, 1%)
+        }
+    }
+    img{
+        border-radius: 15px;
+    }
+}

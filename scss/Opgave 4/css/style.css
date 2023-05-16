@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text?");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Crimson Text", serif;
+  background-color: hsl(40, 43%, 82%);
+  padding: 1rem;
+}
+
+h1 {
+  font-family: "Crimson Text", serif;
+  color: hsl(220, 43%, 30%);
+  padding-bottom: 2rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media screen and (min-width: 601px) {
+  .imagegrid .item {
+    float: left;
+    width: 12.2857142857%;
+  }
+  .imagegrid .item:nth-child(n) {
+    margin: 0 2% 2% 0;
+  }
+  .imagegrid .item:nth-child(7n) {
+    margin-right: 0;
+    /*margin-bottom:0;*/
+  }
+}
+@media screen and (max-width: 600px) {
+  .imagegrid .item {
+    float: left;
+    width: 32.3333333333%;
+  }
+  .imagegrid .item:nth-child(n) {
+    margin: 0 1% 1% 0;
+  }
+  .imagegrid .item:nth-child(3n) {
+    margin-right: 0;
+    /*margin-bottom:0;*/
+  }
+}
+.imagegrid img {
+  border-radius: 15px;
+}/*# sourceMappingURL=style.css.map */
