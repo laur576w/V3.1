@@ -1,0 +1,78 @@
+$blue: hsl(200, 75%, 65%);
+
+@function fancyColor1($color) {
+    $color: scale-color($color, $lightness: calc(-5%));
+    @return $color;
+}
+@function fancyColor2($color, $times) {
+    $color: scale-color($color, $lightness: calc(-5% * ($times - 1)));
+    @return $color;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+// @mixin image-grid($columns, $margin: 1%) {
+    //     &:nth-child(n) {
+//         width:  calc(100% / $columns - ($margin * .9));
+//         float: left;
+//         height:  calc(100% / $columns - ($margin * .9) * 1.77);
+//     }
+//     width: calc(100% / $columns - ($margin * .9));
+//     &:nth-child(n) {
+//         margin: 0 $margin $margin 0;
+//     }
+//     &:nth-child(#{$columns}n) {
+//         margin-right: 0;
+//     }
+// } 
+
+@mixin box() {
+    background-color: $blue;
+    min-height: 25px;
+    min-width: 25px;
+}
+@mixin image-grid($columns, $margin) {
+    width: calc(100% / $columns - ($margin * .8));
+    height: calc(100% / $columns - ($margin * .99));
+    &:nth-child(n) {
+        margin: 0 $margin $margin 0;
+        float: left;
+    }
+    &:nth-child(#{$columns}n) {
+        margin-right: 0;
+        /*margin-bottom:0;*/
+    }
+}
+
+
+.blocks {
+    height: fit-content;
+    
+} 
+
+.block {
+    max-height: max-content;
+}
+@for $i from 1 through 9 {
+    $blue: fancyColor1($blue);
+    .block-#{$i} {
+        @include box();
+        @media screen and (min-width: 800px) {
+            @include image-grid(5, 1%); 
+        }
+        @media screen and (max-width: 799px) {
+            @include image-grid(3, 1%)
+        }
+    }
+}
+
+
+
+body {
+    background-color: silver;
+    min-height: 100vh;
+    max-width: 100vw;
+}
