@@ -12,7 +12,7 @@ $color-bg: hsl(40, 43%, 82%);
 $color-heading: hsl(220, 43%, 30%);
 
 @mixin image-grid($columns, $margin) {
-    width: calc(100% / $columns - ($margin * .9));
+    width: calc(100% / $columns - ($margin - ($margin / $columns)));
     &:nth-child(n) {
         margin: 0 $margin $margin 0;
     }
