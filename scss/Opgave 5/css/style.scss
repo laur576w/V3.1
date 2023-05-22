@@ -9,6 +9,11 @@ $blue: hsl(200, 75%, 65%);
     @return $color;
 }
 
+@function calculateWidth($columns, $margin) {
+    $width: calc(100vw / $columns - ($margin - ($margin / $columns)));
+    @return $width;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -29,14 +34,15 @@ $blue: hsl(200, 75%, 65%);
 //     }
 // } 
 
-@mixin box() {
+@mixin box($columns: 1, $math-symbol: '*', $times: 1) {
     background-color: $blue;
-    min-height: 25px;
-    min-width: 25px;
+    width: calculateWidth($columns, $margin);
+    height: calculateWidth($columns, $margin);
 }
 @mixin image-grid($columns, $margin) {
-    width: calc(100% / $columns - ($margin * .8));
-    height: calc(100% / $columns - ($margin * .99));
+    // width: calc(100vw / $columns - ($margin - ($margin / $columns)));
+    // height: calc(100vw / $columns - ($margin - ($margin / $columns)));
+    
     &:nth-child(n) {
         margin: 0 $margin $margin 0;
         float: left;
@@ -49,7 +55,7 @@ $blue: hsl(200, 75%, 65%);
 
 
 .blocks {
-    height: fit-content;
+    height: 100vh;
     
 } 
 
@@ -59,9 +65,10 @@ $blue: hsl(200, 75%, 65%);
 @for $i from 1 through 9 {
     $blue: fancyColor1($blue);
     .block-#{$i} {
-        @include box();
+        
         @media screen and (min-width: 800px) {
-            @include image-grid(5, 1%); 
+            @include image-grid(5, 1%);
+            @include box(); 
         }
         @media screen and (max-width: 799px) {
             @include image-grid(3, 1%)

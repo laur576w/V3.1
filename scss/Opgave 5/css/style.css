@@ -5,8 +5,7 @@
 }
 
 .blocks {
-  height: -moz-fit-content;
-  height: fit-content;
+  height: 100vh;
 }
 
 .block {
@@ -21,8 +20,8 @@
 }
 @media screen and (min-width: 800px) {
   .block-1 {
-    width: 19.2%;
-    height: 19.01%;
+    width: calc(20vw - 0.8%);
+    height: calc(20vw - 0.8%);
   }
   .block-1:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -35,8 +34,8 @@
 }
 @media screen and (max-width: 799px) {
   .block-1 {
-    width: 32.5333333333%;
-    height: 32.3433333333%;
+    width: calc(33.3333333333vw - 0.6666666667%);
+    height: calc(33.3333333333vw - 0.6666666667%);
   }
   .block-1:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -55,8 +54,8 @@
 }
 @media screen and (min-width: 800px) {
   .block-2 {
-    width: 19.2%;
-    height: 19.01%;
+    width: calc(20vw - 0.8%);
+    height: calc(20vw - 0.8%);
   }
   .block-2:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -69,8 +68,8 @@
 }
 @media screen and (max-width: 799px) {
   .block-2 {
-    width: 32.5333333333%;
-    height: 32.3433333333%;
+    width: calc(33.3333333333vw - 0.6666666667%);
+    height: calc(33.3333333333vw - 0.6666666667%);
   }
   .block-2:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -89,8 +88,8 @@
 }
 @media screen and (min-width: 800px) {
   .block-3 {
-    width: 19.2%;
-    height: 19.01%;
+    width: calc(20vw - 0.8%);
+    height: calc(20vw - 0.8%);
   }
   .block-3:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -103,8 +102,8 @@
 }
 @media screen and (max-width: 799px) {
   .block-3 {
-    width: 32.5333333333%;
-    height: 32.3433333333%;
+    width: calc(33.3333333333vw - 0.6666666667%);
+    height: calc(33.3333333333vw - 0.6666666667%);
   }
   .block-3:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -123,8 +122,8 @@
 }
 @media screen and (min-width: 800px) {
   .block-4 {
-    width: 19.2%;
-    height: 19.01%;
+    width: calc(20vw - 0.8%);
+    height: calc(20vw - 0.8%);
   }
   .block-4:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -137,8 +136,8 @@
 }
 @media screen and (max-width: 799px) {
   .block-4 {
-    width: 32.5333333333%;
-    height: 32.3433333333%;
+    width: calc(33.3333333333vw - 0.6666666667%);
+    height: calc(33.3333333333vw - 0.6666666667%);
   }
   .block-4:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -157,8 +156,8 @@
 }
 @media screen and (min-width: 800px) {
   .block-5 {
-    width: 19.2%;
-    height: 19.01%;
+    width: calc(20vw - 0.8%);
+    height: calc(20vw - 0.8%);
   }
   .block-5:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -171,8 +170,8 @@
 }
 @media screen and (max-width: 799px) {
   .block-5 {
-    width: 32.5333333333%;
-    height: 32.3433333333%;
+    width: calc(33.3333333333vw - 0.6666666667%);
+    height: calc(33.3333333333vw - 0.6666666667%);
   }
   .block-5:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -191,8 +190,8 @@
 }
 @media screen and (min-width: 800px) {
   .block-6 {
-    width: 19.2%;
-    height: 19.01%;
+    width: calc(20vw - 0.8%);
+    height: calc(20vw - 0.8%);
   }
   .block-6:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -205,8 +204,8 @@
 }
 @media screen and (max-width: 799px) {
   .block-6 {
-    width: 32.5333333333%;
-    height: 32.3433333333%;
+    width: calc(33.3333333333vw - 0.6666666667%);
+    height: calc(33.3333333333vw - 0.6666666667%);
   }
   .block-6:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -225,8 +224,8 @@
 }
 @media screen and (min-width: 800px) {
   .block-7 {
-    width: 19.2%;
-    height: 19.01%;
+    width: calc(20vw - 0.8%);
+    height: calc(20vw - 0.8%);
   }
   .block-7:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -239,8 +238,8 @@
 }
 @media screen and (max-width: 799px) {
   .block-7 {
-    width: 32.5333333333%;
-    height: 32.3433333333%;
+    width: calc(33.3333333333vw - 0.6666666667%);
+    height: calc(33.3333333333vw - 0.6666666667%);
   }
   .block-7:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -259,8 +258,8 @@
 }
 @media screen and (min-width: 800px) {
   .block-8 {
-    width: 19.2%;
-    height: 19.01%;
+    width: calc(20vw - 0.8%);
+    height: calc(20vw - 0.8%);
   }
   .block-8:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -273,8 +272,8 @@
 }
 @media screen and (max-width: 799px) {
   .block-8 {
-    width: 32.5333333333%;
-    height: 32.3433333333%;
+    width: calc(33.3333333333vw - 0.6666666667%);
+    height: calc(33.3333333333vw - 0.6666666667%);
   }
   .block-8:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -293,8 +292,8 @@
 }
 @media screen and (min-width: 800px) {
   .block-9 {
-    width: 19.2%;
-    height: 19.01%;
+    width: calc(20vw - 0.8%);
+    height: calc(20vw - 0.8%);
   }
   .block-9:nth-child(n) {
     margin: 0 1% 1% 0;
@@ -307,8 +306,8 @@
 }
 @media screen and (max-width: 799px) {
   .block-9 {
-    width: 32.5333333333%;
-    height: 32.3433333333%;
+    width: calc(33.3333333333vw - 0.6666666667%);
+    height: calc(33.3333333333vw - 0.6666666667%);
   }
   .block-9:nth-child(n) {
     margin: 0 1% 1% 0;
