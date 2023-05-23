@@ -21,10 +21,8 @@
     function palindrom(string $word) {
         if (empty($word) == true) {
             throw new Exception("you must have text");
-        }  
-        $wordRev = strrev($word); 
-          
-        if ($word == $wordRev) {                 
+        }            
+        if ($word == strrev($word)) {                 
             return "word '$word' is a palindrom ";
         }
         return "word '$word' is not a palindrom";
