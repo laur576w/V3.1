@@ -1,8 +1,7 @@
 
 <?php 
 function headertext() {
-    $month = date("m") - 1;
-
+    $month = date("m") - 1;//created so it fits to array
 
     $monthNames = [
         "Januar",
@@ -34,21 +33,26 @@ function headertext() {
     ];
 
     switch(true) {
-        case ($month == 12):
-        case ($month <= 2):
+        //winter
+        case ($month == 11):
+        case ($month <= 1):
             return "Det er {$monthNames[$month]} og dermed {$seasons[0]}{$seasonText[0]}";
             break;
-        case ($month <= 5):
+        //spring
+        case ($month <= 4):
             return "Det er {$monthNames[$month]} og dermed {$seasons[1]}{$seasonText[1]}";
             break;
-        case ($month <= 8):
+        //summer
+        case ($month <= 7):
             return "Det er {$monthNames[$month]} og dermed {$seasons[2]}{$seasonText[2]}";
             break;
-        case ($month <= 11):
+        //faal
+        case ($month <= 10):
             return "Det er {$monthNames[$month]} og dermed {$seasons[3]}{$seasonText[3]}";
             break;
+        // default throws fail message
         default:
-            return "something went wrong";
+            return "ERROR: something went wrong";
             break;
     }
 }
