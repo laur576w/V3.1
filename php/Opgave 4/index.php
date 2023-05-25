@@ -1,5 +1,58 @@
 
+<?php 
+function headertext() {
+    $month = date("m") - 1;
 
+
+    $monthNames = [
+        "Januar",
+        "Februar",
+        "Marts",
+        "April",
+        "Maj",
+        "Juni",
+        "Juli",
+        "August",
+        "September",
+        "Oktober",
+        "Novermber",
+        "December"
+    ];
+
+    $seasons = [
+        "vinter",
+        "forår",
+        "sommer",
+        "efterår"
+    ];
+
+    $seasonText = [
+        ". Er din skøjter helt up-to-date til sæsonens sidste konkurrencer?",
+        ". Skal du have nye skøjter klar til næste sæsons programmer?",
+        ". Off-ice træning er i fuld gang. Vidste du, at vi også sælger in-line rulleskøjtehjul til at sætte under dine Edea støvler",
+        ". Er du kommet godt i gang med sæsonen? Er dine skøjter klar til de første konkurrencer?"
+    ];
+
+    switch(true) {
+        case ($month == 12):
+        case ($month <= 2):
+            return "Det er {$monthNames[$month]} og dermed {$seasons[0]}{$seasonText[0]}";
+            break;
+        case ($month <= 5):
+            return "Det er {$monthNames[$month]} og dermed {$seasons[1]}{$seasonText[1]}";
+            break;
+        case ($month <= 8):
+            return "Det er {$monthNames[$month]} og dermed {$seasons[2]}{$seasonText[2]}";
+            break;
+        case ($month <= 11):
+            return "Det er {$monthNames[$month]} og dermed {$seasons[3]}{$seasonText[3]}";
+            break;
+        default:
+            return "something went wrong";
+            break;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +71,13 @@
     <div class="content">
 
         <header>
+            <p style="text-align: center; background-image: linear-gradient( hsl(0, 60%, 34%), #dd7878); color:hsl(39, 58%, 95%);">
+                <?= 
+                    
+                   headertext(); 
+                    
+                ?>
+            </p>
             <img src="<?php if (date("m") <= 6) {?>./img/edea-ice-skate-collection-2018.jpg<?php } else { ?>./img/edea-home-of-champions.jpg<?php } ?>" alt="Edea skates">
         </header>
         <main>
