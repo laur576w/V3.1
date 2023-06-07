@@ -1,12 +1,16 @@
 <?php 
-    session_start();
-
+    if(!isset($_SESSION)){
+        session_start();
+    }
     if(isset($_SESSION["login"]) == true) {
         header("Location: https://laur576w.aspitcloud.dk/v31/php/Opgave%204/index.php");
         exit();
     }
-    
-    $db = new MySQLi("localhost:3306", "laur576w", "Y?g2;(xZnz}N", "laur576w_v3_1");
+
+    if($_POST["login-submit"]) {
+        $errors = []; //stores errors
+
+        $db = new MySQLi("localhost:3306", "laur576w", "Y?g2;(xZnz}N", "laur576w_v3_1");
     if (!$db) {
         die("Connection failed: " . mysqli_connect_error());
     }
@@ -40,8 +44,6 @@
             exit();
         }
     }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +66,13 @@
     <div class="content">
         <main>
         <h1>Login</h1>
+        <?php 
+            if(isset($_SESSION["fname"]) && !isset($_SESSION["login"])) {
+                ?>
+                <h2>Velkommen til, <?= $_SESSION["fname"] ?>. Du kan logge ind her:</h2>
+                <?php
+            }
+        ?>
         <form method="post">
         <?php if(!empty($errors)) {?>
                 <div class="error">

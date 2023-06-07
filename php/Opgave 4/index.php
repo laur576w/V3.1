@@ -1,5 +1,8 @@
-
 <?php 
+        session_start();
+    //if the 1st line is an empty line session_start() doesn't work
+    
+
 function headertext() {
     $month = date("m") - 1;//created so it fits to array
 

@@ -9,3 +9,12 @@
         <li><a href="#">Min kurv</a></li>
     </ul>
 </nav>
+<?php 
+if(isset($_SESSION["username"])) {
+?>
+    <div class="logon-bar">
+        <p>Logget ind som: <?= $_SESSION["username"]; ?></p>
+    </div>
+<?php
+}
+?>

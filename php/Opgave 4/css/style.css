@@ -260,10 +260,10 @@ footer div a {
   text-decoration: none;
 }
 footer h3 {
-  height: 4vh;
+  /*height: 4vh;*/
 }
 footer form p {
-  height: 4vh;
+  /*height: 4vh;*/
 }
 
 form p {
@@ -297,12 +297,34 @@ form .loginbtn {
   margin-left: 0;
 }
 
+.logon-bar {
+  position: relative;
+  margin-left: 220px;
+  text-align: right;
+  top: 50px;
+  background-color: hsl(0, 60%, 34%);
+  color: hsl(39, 58%, 95%);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.error {
+  color: red;
+  margin: 0 auto 1em auto;
+  mix-blend-mode: hard-light;
+}
+
 .light {
-  /*background-color: $bg-color-body;*/
   background-color: hsl(39, 58%, 95%);
+  background-color: #f7eae9;
 }
 
 .dark {
-  /*background-color: adjust-color($bg-color-body, $lightness: -25%);*/
   background-color: #dfc086;
+  background-color: #d5918c;
+  background-color: #e3b4b1;
+}
+.dark .error {
+  /*text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
+  /*-webkit-text-stroke: 1px black;*/
 }/*# sourceMappingURL=style.css.map */
