@@ -1,10 +1,14 @@
 <?php 
     session_start();
-    if(isset($_SESSION["login"]) == true) {
+    if(!isset($_SESSION["login"])) {
+        header("Location: https://laur576w.aspitcloud.dk/v31/php/Opgave%204/login.php");
+        exit();
+    }
+    
+
     $_SESSION = [];
     session_unset();
     session_destroy();
-    }
      
 ?>
 <!DOCTYPE html>

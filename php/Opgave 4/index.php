@@ -3,6 +3,9 @@
     //if the 1st line is an empty line session_start() doesn't work
     
 
+    include "./includes/db-functions.php";
+    $db = getDb("laur576w_v3_1");
+
 function headertext() {
     $month = date("m") - 1;//created so it fits to array
 
@@ -99,6 +102,40 @@ function headertext() {
             <section>
                 <h2>Udvalgte produkter:</h2>
                 <div class="products">
+                    <?php 
+                        
+
+                        if($result = $db->query("SELECT * FROM products ORDER BY PID DESC LIMIT 3")) {
+                            foreach($result as $row) {
+                                ?>
+                                <article>
+                                    <?php
+                                        $imgs = explode(" ", trim($row["PPic"]));
+                                    ?>
+                                    <img src="./img/<?php 
+                                        if(empty($imgs[0]) || $imgs[0] == "NULL" ){
+                                            echo "imagecomingsoon.png";
+                                        }
+                                        else {
+                                            echo $imgs[0];
+                                        }
+                                    ?>" alt="">
+                                    <h3><?= $row["PName"] ?></h3>
+                                    <p>Antal stjerner: <?= $row["PStars"] ?></p>
+                                    <p>Beskrivelse:</p>
+                                    <p><?= $row["PDesc"] ?></p>
+                                    <p>Stivhed: <?= $row["PStiff"] ?></p>
+                                    <p>Understøtter: <?= $row["PSupp"] ?></p>
+                                    <p>Pris: <?= $row["PPrice"] ?>,-</p>
+                                    <a href="showproduct.php<?= "?PID=" . $row["PID"] ?>"><button>Læs mere!</button></a>
+                                </article>
+                                <?php
+                            }
+                        }
+                        else{
+                            $errors[] = "error". $db->error; 
+                        }
+                    ?>
                     <article>
                         <img src="img/imagecomingsoon.png" alt="Edea skate">
                         <h3>Edea Flamenco Ice</h3>

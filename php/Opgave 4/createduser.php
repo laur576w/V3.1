@@ -10,10 +10,7 @@
     if($_POST["login-submit"]) {
         $errors = []; //stores errors
 
-        $db = new MySQLi("localhost:3306", "laur576w", "Y?g2;(xZnz}N", "laur576w_v3_1");
-    if (!$db) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
+        $db = getDb("laur576w_v3_1");
     if($_POST["login-submit"]) {
         $errors = []; //stores errors
         

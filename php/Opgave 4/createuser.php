@@ -8,16 +8,45 @@
         exit();
     }
 
+    include "includes/db-functions.php";
+
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $errors = [];
-        //checking if username is set
-        if(!isset($_POST["newuser-username"]) || empty($_POST["newuser-username"])) {
-            $errors["username"] =  "Brugernavnet må ikke være tomt.";
+
+        //established connection to database
+        $db = getDb("laur576w_v3_1");
+
+        //trim each post
+        foreach($_POST as $index => $value) {
+            $_POST[$index] = trim($value);
+        }
+        if($db->query("SELECT * FROM users WHERE Username = '{$_POST["newuser-username"]}'")) {
+            $result = $db->query("SELECT * FROM users WHERE Username = '{$_POST["newuser-username"]}'");
+            $row = $result->fetch_assoc();
+            
+            if(empty($row)) {
+                //checking if username is set
+                if(isset($_POST["newuser-username"]) && !empty($_POST["newuser-username"])&&
+                (!isset($row) && empty($row))) {
+                    echo "you pass";
+                }
+                else{
+                    $errors["username"] =  "Brugernavnet må ikke være tomt.";
+                }
+            }
+            else {
+                $errors["username"] = "Brugernavnet er allerede brugt af en anden";
+            }
+            
+            
+        }
+        else {
+            $errors[] = $db->error;
         }
 
         //checking if firstname is set
         if(isset($_POST["newuser-firstname"]) && !empty($_POST["newuser-firstname"])) {
-    
+            echo "you pass1";
         }
         else {
             $errors["fname"] = "Udfyld fornavn";
@@ -40,7 +69,7 @@
         // }
 
          //checking if passwords are the same and not empty
-        if(trim($_POST["newuser-password"]) !== trim($_POST["newuser-passwordrepeat"]) || !isset($_POST["newuser-password"]) || empty($_POST["newuser-password"])) {
+        if($_POST["newuser-password"] !== $_POST["newuser-passwordrepeat"] || !isset($_POST["newuser-password"]) || empty($_POST["newuser-password"])) {
             $errors["password"] =  "Adgangskoderne er ikke ens.";
             
         }
@@ -72,14 +101,14 @@
 
         //checks email is valid
         if(
-            isset($_POST["newuser-email"]) && 
-            !empty($_POST["newuser-email"]) && 
-            preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/', $_POST["newuser-email"])
+            !isset($_POST["newuser-email"]) || 
+            empty($_POST["newuser-email"]) || 
+            !preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/', $_POST["newuser-email"])
         ) {
 
+            $errors["email"] = "Ikke valid email";
         }
         else {
-            $errors["email"] = "Ikke valid email";
         }
         
 
@@ -88,9 +117,15 @@
             if(!isset($_SESSION)){
                 session_start();
             }
-            $_SESSION["fname"] = ucfirst(trim($_POST["newuser-firstname"]));
-            header("Location: https://laur576w.aspitcloud.dk/v31/php/Opgave%204/createduser.php");
-            exit();
+            
+            if($db->query("INSERT INTO users (Username, Password, Firstname, Lastname, Address, Country, Postcode, Email, Website) VALUES ('{$_POST["newuser-username"]}', '{$_POST["newuser-password"]}', '{$_POST["newuser-firstname"]}', '{$_POST["newuser-lastname"]}', '{$_POST["newuser-address"]}', '{$_POST["newuser-country"]}', {$_POST["newuser-postcode"]}, '{$_POST["newuser-email"]}', '{$_POST["newuser-website"]}');")) 
+            {
+                $_SESSION["fname"] = ucfirst(trim($_POST["newuser-firstname"]));
+                $db->query("INSERT INTO users (Username, Password, Firstname, Lastname, Address, Country, Postcode, Email, Website) VALUES ('{$_POST["newuser-username"]}', '{$_POST["newuser-password"]}', '{$_POST["newuser-firstname"]}', '{$_POST["newuser-lastname"]}', '{$_POST["newuser-address"]}', '{$_POST["newuser-country"]}', {$_POST["newuser-postcode"]}, '{$_POST["newuser-email"]}', '{$_POST["newuser-website"]}');");
+                header("Location: https://laur576w.aspitcloud.dk/v31/php/Opgave%204/login.php");
+                exit();
+            }
+            
         }
     }
     
@@ -121,7 +156,7 @@
                 <input type="text" name="newuser-username" placeholder="Brugernavn" class="logininput">
             </p>
             <?php 
-                if($errors["username"]) {
+                if(isset($errors["username"])) {
                     ?>
                     <p class="error"><?= $errors["username"] ?></p>
                     <?php
@@ -137,7 +172,7 @@
                 <input type="text" name="newuser-passwordrepeat" placeholder="Gentag adgangskode" class="logininput">
             </p>
             <?php 
-                if($errors["password"]) {
+                if(isset($errors["password"])) {
                     ?>
                     <p class="error"><?= $errors["password"] ?></p>
                     <?php
@@ -150,7 +185,7 @@
                 <input type="text" name="newuser-firstname" placeholder="Fornavn" class="logininput">
             </p>
             <?php 
-                if($errors["fname"]) {
+                if(isset($errors["fname"])) {
                     ?>
                     <p class="error"><?= $errors["fname"] ?></p>
                     <?php
@@ -162,7 +197,7 @@
                 <input type="text" name="newuser-lastname" placeholder="Efternavn" class="logininput">
             </p>
             <?php 
-                if($errors["lname"]) {
+                if(isset($errors["lname"])) {
                     ?>
                     <p class="error"><?= $errors["lname"] ?></p>
                     <?php
@@ -179,7 +214,7 @@
                 <input type="number" name="newuser-phone" placeholder="Telefon nr." class="logininput">
             </p>
             <?php 
-                if($errors["phone"]) {
+                if(isset($errors["phone"])) {
                     ?>
                     <p class="error"><?= $errors["phone"] ?></p>
                     <?php
@@ -191,7 +226,7 @@
                 <input type="text" name="newuser-postcode" placeholder="Postnummer" class="logininput">
             </p>
             <?php 
-                if($errors["postcode"]) {
+                if(isset($errors["postcode"])) {
                     ?>
                     <p class="error"><?= $errors["postcode"] ?></p>
                     <?php
@@ -200,7 +235,7 @@
 
             <p>
                 <label for="newuser-city">By: </label>
-                <input type="text" name="newuser-city" placeholder="By" disabled class="logininput">
+                <input type="text" name="newuser-city" placeholder="By" class="logininput">
             </p>
             
             <p>
@@ -208,7 +243,7 @@
                 <input type="text" name="newuser-country" placeholder="Land" class="logininput">
             </p>
             <?php 
-                if($errors["country"]) {
+                if(isset($errors["country"])) {
                     ?>
                     <p class="error"><?= $errors["country"] ?></p>
                     <?php
@@ -220,7 +255,7 @@
                 <input type="text" name="newuser-email" placeholder="E-mail adresse" class="logininput">
             </p>
             <?php 
-                if($errors["email"]) {
+                if(isset($errors["email"])) {
                     ?>
                     <p class="error"><?= $errors["email"] ?></p>
                     <?php

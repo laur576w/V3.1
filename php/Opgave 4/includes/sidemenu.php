@@ -9,7 +9,7 @@
         <?php } 
         else { 
         ?> 
-            <li><a href="#">Min Konto</a></li>
+            <li><a href="my-account.php">Min Konto</a></li>
             <li><a href="logout.php">Log ud</a></li>
         <?php } ?>        
     </ul>

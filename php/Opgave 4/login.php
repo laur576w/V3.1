@@ -5,25 +5,25 @@
         header("Location: https://laur576w.aspitcloud.dk/v31/php/Opgave%204/index.php");
         exit();
     }
+    include "includes/db-functions.php";
+
+    $db = getDb("laur576w_v3_1");
     
-    $db = new MySQLi("localhost:3306", "laur576w", "Y?g2;(xZnz}N", "laur576w_v3_1");
-    if (!$db) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-    if($_POST["login-submit"]) {
+    if(isset($_POST["login-submit"])) {
         $errors = []; //stores errors
         
-        $username = trim($_POST["login-username"]);
-        $password = trim($_POST["login-password"]);
-        if($db->query("SELECT * FROM users WHERE Username = '$username' AND Password = '$password'")){
-            $result = $db->query("SELECT * FROM users WHERE Username = '$username' AND Password = '$password'");
+        foreach($_POST as $index => $value){
+            $_POST["$index"] = $value;
+        }
+        if($db->query("SELECT * FROM users WHERE Username = '{$_POST["login-username"]}' AND Password = '{$_POST["login-password"]}'")){
+            $result = $db->query("SELECT * FROM users WHERE Username = '{$_POST["login-username"]}' AND Password = '{$_POST["login-password"]}'");
             $row = $result->fetch_assoc();
             if((isset($_POST["login-username"]) && !empty($_POST["login-username"])) && 
             (isset($_POST["login-password"]) && !empty($_POST["login-password"])) &&
             isset($row) && !empty($row) &&
-            $row["Username"] == $username && 
-            $row["Password"] == $password) {
-                $_SESSION["username"] = $username;
+            $row["Username"] == $_POST["login-username"] && 
+            $row["Password"] == $_POST["login-password"]) {
+                $_SESSION["username"] = $row["Username"];
                 $_SESSION["login"] = true;
             }
             else {
@@ -64,6 +64,13 @@
     <div class="content">
         <main>
         <h1>Login</h1>
+        <?php 
+            if(isset($_SESSION["fname"]) && !isset($_SESSION["login"])) {
+                ?>
+                <h2>Velkommen til, <?= $_SESSION["fname"] ?>. Du kan logge ind her:</h2>
+                <?php
+            }
+        ?>
         <form method="post">
         <?php if(!empty($errors)) {?>
                 <div class="error">
